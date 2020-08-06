@@ -1,0 +1,70 @@
+﻿<Window x:Class="ChangeStreamDateApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ChangeStreamDateApp"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        mc:Ignorable="d"
+        SizeToContent="WidthAndHeight" 
+        Title="MainWindow" Height="450" Width="800" ResizeMode="NoResize">
+
+    <Grid Background="#FF212121">
+        <Label Content="Stream Date Changer" HorizontalAlignment="Left" Margin="283,24,0,0" VerticalAlignment="Top" Foreground="#DDFFFFFF" FontSize="24"/>
+        <xctk:DateTimePicker x:Name="DatePicked" ValueChanged="DatePicked_ValueChanged" HorizontalAlignment="Left" Margin="50,115,0,0" VerticalAlignment="Top" Height="22" Width="239" Background="#FF383838" Foreground="#DDFFFFFF" BorderBrush="#00ABADB3"/>
+        <Image Margin="6,340,544,6" Source="large emblum.png" Stretch="None"/>
+        <Label Content="Select time and date to go live" HorizontalAlignment="Left" Margin="50,78,0,0" VerticalAlignment="Top" Foreground="#DDFFFFFF" FontSize="16"/>
+        <Label Content="Select File" HorizontalAlignment="Left" Margin="50,157,0,0" VerticalAlignment="Top" Foreground="#DDFFFFFF" FontSize="16"/>
+        <Image x:Name="status" Margin="732,359,0,0" Source="red.png" Stretch="Fill" HorizontalAlignment="Left" Width="32" Height="32" VerticalAlignment="Top"/>
+        <Button x:Name="updateButton" Content="Update file" HorizontalAlignment="Left" Margin="342,269,0,0" VerticalAlignment="Top" Width="109" Height="29" BorderBrush="#00707070" Background="#FF383838" Foreground="#60FFFFFF" FontSize="14" Click="Update_Click" Cursor="No">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="0">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="Red"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="browse" Content="Browse" HorizontalAlignment="Left" Margin="50,192,0,0" VerticalAlignment="Top" Width="109" Height="29" BorderBrush="#00707070" Background="#FF383838" Foreground="#DDFFFFFF" FontSize="14" Click="Browse_Click" Cursor="Hand">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="0">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="Red"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Label x:Name="path" Content="No file selected" HorizontalAlignment="Left" Margin="173,191,0,0" VerticalAlignment="Top" Foreground="#99FFFFFF" FontSize="16" Background="#00000000"/>
+        <Label x:Name="dateDefaultInfo" Content="(Default value is 30 minutes from when the program was opened)" HorizontalAlignment="Left" Margin="298,115,0,0" VerticalAlignment="Top" Foreground="#99FFFFFF" FontSize="10" Background="#00000000"/>
+        <Label Content="Status" HorizontalAlignment="Left" Margin="729,390,0,0" VerticalAlignment="Top" Foreground="#99FFFFFF" Background="#00000000" FontSize="10"/>
+
+    </Grid>
+</Window>

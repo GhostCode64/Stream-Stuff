@@ -1,0 +1,77 @@
+<!--51d4a78f-8943-434a-91f9-dc48cd5c8543-->
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="js/progressBarTimer.js"></script>
+    </head>
+    <body style="background: #00b140;">
+        <!-- Display the countdown timer in an element -->
+        <p id="live" style="text-align: center; color: white; font-size: 60px; font-family: 'SciFly Sans'; margin: 1;">I should be live in...</p>
+        <p id="timer" style="text-align: center; color: white; font-size: 100px; font-family: 'SciFly Sans'; margin: 0;"></p>
+        <br>
+        <center><div id="progressBar" style="width: 600px;" class="progressBarTimer"></div></center>
+
+        <script>
+        // Set the date we're counting down to
+		var countDownDate = new Date("February 24, 2020 22:0:0").getTime();
+        var now = new Date().getTime();
+
+        var secondDifference = (Math.abs(now - countDownDate) / 1000) - 1 
+
+        console.log(secondDifference)
+
+        $('#progressBar').progressBarTimer({
+            timeLimit: secondDifference,
+            autoStart: true,
+            striped: true,
+            animated: true // default: 60
+        });
+
+        // Update the count down every 1 second
+        var x = setInterval(function() {
+
+            // Get today's date and time
+            now = new Date().getTime();
+
+            // Find the distance between now and the count down date
+            var distance = countDownDate - now;
+
+            // Time calculations for days, hours, minutes and seconds
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            if (days != 0){
+                // Display the result in the element with id="timer"
+                document.getElementById("timer").innerHTML = days + "d " + hours + "h "
+                + minutes + "m " + seconds + "s ";
+            } if (days == 0){
+                // Display the result in the element with id="timer"
+                document.getElementById("timer").innerHTML = hours + "h "
+                + minutes + "m " + seconds + "s ";
+                if (hours == 0){
+                    // Display the result in the element with id="timer"
+                    document.getElementById("timer").innerHTML = minutes + "m " + seconds + "s ";
+                    if(minutes == 0){
+                        // Display the result in the element with id="timer"
+                        document.getElementById("timer").innerHTML = seconds + "s ";
+                    }
+                }
+                
+            }
+
+            // If the count down is finished, write some text
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("live").innerHTML = "I should be live...";
+                document.getElementById("timer").innerHTML = "NOW!";
+            }
+        }, 1000);
+        </script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <!-- JavaScript -->
+    </body>
+</html>
